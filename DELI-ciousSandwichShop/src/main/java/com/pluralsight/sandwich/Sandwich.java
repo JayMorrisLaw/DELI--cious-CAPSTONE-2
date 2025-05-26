@@ -1,9 +1,6 @@
-package com.pluralsight;
+package com.pluralsight.sandwich;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class Sandwich {
@@ -13,8 +10,8 @@ public class Sandwich {
     private boolean isToasted;
     private ArrayList<ToppingPortion> toppings;
 
-    //constructor
 
+    //constructor
 
     public Sandwich(int size, String breadType, boolean isToasted) {
         this.size = size;
@@ -23,13 +20,27 @@ public class Sandwich {
         this.toppings = new ArrayList<>();
     }
 
-    // methods for add topping ang get price
+    // methods for add topping and get price
     public void addTopping(Topping topping, boolean extra) {
         toppings.add(new ToppingPortion(topping, extra));
     }
     public double getPrice(){
-        // TODO: Implement real pricing later using size, bread type, and toppings
-        return 0.0; // placeholder value so your program compiles
+        // determining price
+        double basePrice = 0.0;
+        if (size ==4) {
+            basePrice = 5.50;
+        } else if (size == 8) {
+            basePrice = 7.00;
+        }else if (size == 12){
+            basePrice = 8.50;
+        }
+       // add topping prices
+
+        for (ToppingPortion portion : toppings) {
+            basePrice += portion.getTopping().getPrice(size, portion.isExtra());
+
+        }
+        return basePrice;
     }
 }
 

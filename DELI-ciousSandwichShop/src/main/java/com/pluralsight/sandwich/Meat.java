@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.sandwich;
 
 public class Meat extends Topping {
 
