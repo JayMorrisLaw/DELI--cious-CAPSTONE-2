@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
-    private static int nextId = 1;
-
+    // attributes
+    private static int nextId = 1;// order tracking, starts at1 and + by1
     private int orderId;
     private ArrayList<Sandwich> sandwiches;
     private ArrayList<Drinks> drinks;
@@ -16,7 +16,8 @@ public class Order {
     private LocalDateTime orderTime;
 
     public Order() {
-        this.orderId = nextId++;  // Assign and increment
+        // constructor
+        this.orderId = nextId++;  // Assigns ID and increments
         this.sandwiches = new ArrayList<>();
         this.drinks = new ArrayList<>();
         this.chips = new ArrayList<>();
@@ -26,7 +27,7 @@ public class Order {
     public int getOrderId() {
         return orderId;
     }
-
+// methods
     public void addSandwich(Sandwich sandwich) {
         sandwiches.add(sandwich);
     }
@@ -38,10 +39,10 @@ public class Order {
     public void addChips(Chips chip) {
         chips.add(chip);
     }
-
+// calculate total cost
     public double getTotal() {
-        double total = 0.0;
-
+        double total = 0.0;// initialize total
+// getting prices for all items
         for (Sandwich sandwich : sandwiches) {
             total += sandwich.getPrice();
         }
@@ -56,7 +57,7 @@ public class Order {
 
         return total;
     }
-
+// returning fields
     public ArrayList<Sandwich> getSandwiches() {
         return sandwiches;
     }
