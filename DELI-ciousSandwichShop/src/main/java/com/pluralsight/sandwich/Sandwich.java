@@ -1,21 +1,23 @@
 package com.pluralsight.sandwich;
 
+import com.pluralsight.Bread;
+
 import java.util.ArrayList;
 
 
 public class Sandwich {
     //attributes to sandwich class
-    private int size;
-    private String breadType;
+    private int  size;
+    private Bread breadType;
     private boolean isToasted;
     private ArrayList<ToppingPortion> toppings;
 
 
     //constructor
 
-    public Sandwich(int size, String breadType, boolean isToasted) {
+    public Sandwich(int size, Bread bread, boolean isToasted) {
         this.size = size;
-        this.breadType = breadType;
+        this.breadType = bread;
         this.isToasted = isToasted;
         this.toppings = new ArrayList<>();
     }
@@ -42,5 +44,21 @@ public class Sandwich {
         }
         return basePrice;
     }
+    public String getReceiptLine(int index) {
+        StringBuilder line = new StringBuilder();
+
+        line.append(size).append("\" ");        // shows sandwich size
+        line.append(breadType.getType());           // shows bread type
+
+        if (isToasted) {
+            line.append(" (toasted)");               // shows if it's toasted
+        }
+
+        line.append(" - $").append(String.format("%.2f", getPrice())); // shows price
+
+        return line.toString();
+    }
+
+
 }
 
