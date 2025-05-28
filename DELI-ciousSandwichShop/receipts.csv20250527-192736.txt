@@ -1,0 +1,15 @@
+=== DELI-cious Receipt ===
+Order ID: 1
+Time: 2025-05-27 19:27:36
+
+--- Sandwiches ---
+7.75
+
+--- Drinks ---
+Small cola - $2.00
+
+--- Chips ---
+bbq - $1.50
+
+TOTAL: $11.25
+===========================

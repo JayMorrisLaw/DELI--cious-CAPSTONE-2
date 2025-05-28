@@ -46,7 +46,6 @@ public class Sandwich {
     }
     public String getReceiptLine(int index) {
         StringBuilder line = new StringBuilder();
-
         line.append(size).append("\" ");        // shows sandwich size
         line.append(breadType.getType());           // shows bread type
 
@@ -59,6 +58,19 @@ public class Sandwich {
         return line.toString();
     }
 
+// generates a line summary of the sandwich
+    public String getReceiptLine() {
+        StringBuilder line = new StringBuilder(); // builds string
+        line.append(size).append("\" "); // size 8
+        line.append(breadType.getType()); // wheat
+
+        if (isToasted) {
+            line.append(" (toasted)");
+        }
+
+        line.append(" - $").append(String.format("%.2f", getPrice()));
+        return line.toString();
+    }
 
 }
 
