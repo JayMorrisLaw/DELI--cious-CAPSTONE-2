@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.sandwich;
 
 public class Chips {
     private String type;
@@ -13,6 +13,6 @@ public class Chips {
         return type;
     }// method for getting type n price
     public String getReceiptLine() {
-        return type + " - $" + String.format("%.2f", getPrice());
+        return type + " - $" + String.format("%.2f", getPrice());// returns in this format
     }
 }

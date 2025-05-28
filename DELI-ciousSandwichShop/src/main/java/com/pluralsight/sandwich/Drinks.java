@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.sandwich;
 
 public class Drinks {
     private String size;
@@ -28,7 +28,7 @@ public class Drinks {
         return flavor;
     }// method for size flavor
     public String getReceiptLine() {
-        return size + " " + flavor + " - $" + String.format("%.2f", getPrice());
+        return size + " " + flavor + " - $" + String.format("%.2f", getPrice());// returns in this format
     }
 
 }

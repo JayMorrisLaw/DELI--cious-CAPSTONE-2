@@ -1,8 +1,7 @@
 package com.pluralsight.sandwich;
 
-import com.pluralsight.Bread;
-
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Sandwich {
@@ -10,8 +9,7 @@ public class Sandwich {
     private int  size;
     private Bread breadType;
     private boolean isToasted;
-    private ArrayList<ToppingPortion> toppings;
-
+    private List<ToppingPortion> toppings;
 
     //constructor
 
@@ -29,6 +27,7 @@ public class Sandwich {
     public double getPrice(){
         // determining price
         double basePrice = 0.0;
+
         if (size ==4) {
             basePrice = 5.50;
         } else if (size == 8) {
@@ -37,7 +36,6 @@ public class Sandwich {
             basePrice = 8.50;
         }
        // add topping prices
-
         for (ToppingPortion portion : toppings) {
             basePrice += portion.getTopping().getPrice(size, portion.isExtra());
 
@@ -46,23 +44,20 @@ public class Sandwich {
     }
     public String getReceiptLine(int index) {
         StringBuilder line = new StringBuilder();
-        line.append(size).append("\" ");        // shows sandwich size
-        line.append(breadType.getType());           // shows bread type
-
+        line.append(size).append("\" ");   // shows sandwich size
+        line.append(breadType.getType());   // shows bread type
         if (isToasted) {
-            line.append(" (toasted)");               // shows if it's toasted
+            line.append(" (toasted)");     // shows if it's toasted
         }
-
         line.append(" - $").append(String.format("%.2f", getPrice())); // shows price
-
         return line.toString();
     }
 
 // generates a line summary of the sandwich
     public String getReceiptLine() {
         StringBuilder line = new StringBuilder(); // builds string
-        line.append(size).append("\" "); // size 8
-        line.append(breadType.getType()); // wheat
+        line.append(size).append("\" "); // shows size
+        line.append(breadType.getType()); // adds/ shows bread type
 
         if (isToasted) {
             line.append(" (toasted)");
@@ -71,6 +66,10 @@ public class Sandwich {
         line.append(" - $").append(String.format("%.2f", getPrice()));
         return line.toString();
     }
+    public List<ToppingPortion> getToppings() {
+        return toppings;
+    }
+
 
 }
 

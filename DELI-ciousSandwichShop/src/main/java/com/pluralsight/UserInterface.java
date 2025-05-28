@@ -1,26 +1,26 @@
 package com.pluralsight;
 import com.pluralsight.sandwich.*;
 import java.util.Scanner;
-import com.pluralsight.Receipts;
+// class imports
 
 
 public class UserInterface {
     private Scanner scanner;
-
+// constructor
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
     }
-
+    // main menu loop
     public void showMainMenu() {
         boolean running = true;
-
+// while running....
         while (running) {
             System.out.println("=== Welcome to DELI-cious ===");
             System.out.println("1) New Order");
             System.out.println("0) Exit");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine();
-
+// 1 for new order , 0 to exit menu
             switch (choice) {
                 case "1":
                     processNewOrder();
@@ -34,11 +34,11 @@ public class UserInterface {
             }
         }
     }
-
+// build new order
     private void processNewOrder() {
         Order order = new Order();
         boolean ordering = true;
-
+// boolean ordering is true so loop while ordering
         while (ordering) {
             System.out.println("\n--- Order Menu ---");
             System.out.println("1) Add Sandwich");
@@ -60,9 +60,11 @@ public class UserInterface {
                     processAddChips(order);
                     break;
                 case "4":
+                    // displays order cost  in 2 decimal format
                     System.out.println("Order Total: $" + String.format("%.2f", order.getTotal()));
                     System.out.print("Confirm and checkout? (y/n): ");
                     String confirm = scanner.nextLine();
+                    //confirm order
                     if (confirm.equalsIgnoreCase("y")) {
                         Receipts.saveToFile(order);
                         System.out.println("Order completed and receipt saved!.. Coming right up!");
@@ -72,6 +74,7 @@ public class UserInterface {
                     }
                     break;
                 case "0":
+                    // cancel order
                     System.out.println("Order canceled. Returning home.");
                     ordering = false;
                     break;
@@ -83,7 +86,7 @@ public class UserInterface {
 
     private void processAddSandwich(Order order) {
         System.out.println("--- Build Your Sandwich ---");
-
+// header plus size selection
         int size = 0;
         while (size != 4 && size != 8 && size != 12) {
             System.out.print("Choose sandwich size (4 in, 8 in, 12 in): ");
@@ -93,13 +96,13 @@ public class UserInterface {
                 size = 0;
             }
         }
-
+// bread type selection
         System.out.println("Choose bread type:");
         System.out.println("1) White");
         System.out.println("2) Wheat");
         System.out.println("3) Rye");
         System.out.println("4) Wrap");
-        String breadChoice = this.scanner.nextLine();
+        String breadChoice = this.scanner.nextLine();// scanner takes selected bread type
         String breadType = switch (breadChoice) {
             case "1" -> "White";
             case "2" -> "Wheat";
@@ -116,6 +119,7 @@ public class UserInterface {
 
         boolean addingToppings = true;
         while (addingToppings) {
+            // toppings loop
             System.out.println("\nAdd a topping:");
             System.out.println("1) Meat");
             System.out.println("2) Cheese");
@@ -127,24 +131,26 @@ public class UserInterface {
 
             switch (input) {
                 case "1" -> {
-                    System.out.print("Enter meat (e.g., Ham): ");
+                    // case 1 for diff toppings
+                    System.out.print("Enter meat (Steak, Ham, salami, roast beef, chicken, bacon ): ");
                     String name = this.scanner.nextLine();
-                    boolean extra = askExtra();
-                    sandwich.addTopping(new Meat(name), extra);
+                    boolean extra = askExtra();// asks if they want extra
+                    sandwich.addTopping(new Meat(name), extra);// adds if extra
                 }
                 case "2" -> {
-                    System.out.print("Enter cheese (e.g., Swiss): ");
+                    // case 2 for cheeses
+                    System.out.print("Enter cheese (American, Provolone, Cheddar, Swiss): ");
                     String name = this.scanner.nextLine();
                     boolean extra = askExtra();
                     sandwich.addTopping(new Cheese(name), extra);
                 }
-                case "3" -> {
-                    System.out.print("Enter regular topping (e.g., Lettuce): ");
+                case "3" -> { // case for included toppings
+                    System.out.print("Enter regular topping (Peppers, Lettuce, Onions, Tomato, Jalapeno, Cucumber, Pickle, Guac, Mushroom): ");
                     String name = this.scanner.nextLine();
                     sandwich.addTopping(new RegularTopping(name), false);
                 }
-                case "4" -> {
-                    System.out.print("Enter sauce (e.g., Mayo): ");
+                case "4" -> { // case for included sauces
+                    System.out.print("Enter sauce (Ketchup, Ranch, thousand islands, vinagrette, Mayo): ");
                     String name = this.scanner.nextLine();
                     sandwich.addTopping(new Sauce(name), false);
                 }
@@ -159,6 +165,7 @@ public class UserInterface {
 
 
     private void processAddDrink(Order order) {
+        // add drinks to order
         System.out.println("Choose drink size:");
         System.out.println("1) Small");
         System.out.println("2) Medium");
@@ -170,18 +177,18 @@ public class UserInterface {
             case "3" -> "Large";
             default -> "Small";
         };
-
-        System.out.print("Enter drink flavor (e.g., Cola): ");
+// drink flavor selection
+        System.out.print("Enter drink flavor (Lemondade, Sprite, Orange, Dr.Pepper, Cola): ");
         String flavor = this.scanner.nextLine();
 
-        order.addDrink(new Drinks(size, flavor));
+        order.addDrink(new Drinks(size, flavor));// add drinks to order
         System.out.println("Drink added.\n");
     }
 
     private void processAddChips(Order order) {
-        System.out.print("Enter chip type (e.g., BBQ): ");
+        System.out.print("Enter chip type (Jalapeno Kettle, Sour cream & Onion, Honey siracha, Plain, BBQ): ");
         String type = this.scanner.nextLine();
-
+//chip selection
         order.addChips(new Chips(type));
         System.out.println("Chips added.\n");
     }

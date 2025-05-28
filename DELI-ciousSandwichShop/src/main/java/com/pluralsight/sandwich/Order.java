@@ -1,8 +1,5 @@
 package com.pluralsight.sandwich;
 
-import com.pluralsight.Chips;
-import com.pluralsight.Drinks;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,7 +30,7 @@ public class Order {
         try {
             // Format time
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-            String fileName = "receipts.csv" + order.getOrderTime().format(formatter) + ".txt";
+            String fileName = "receipts.txt" + order.getOrderTime().format(formatter) + ".txt";
 
             //  write to receipt file
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));

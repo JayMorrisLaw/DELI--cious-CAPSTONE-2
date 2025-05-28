@@ -2,7 +2,7 @@ package com.pluralsight.sandwich;
 
 public abstract class Topping {
     private String name;
-
+// attribute ^ and constructor
     public Topping(String name) {
         this.name = name;
     }

@@ -1,6 +1,5 @@
-package com.pluralsight.sandwich;
+package com.pluralsight;
 
-import com.pluralsight.UserInterface;
 import java.util.Scanner;
 
 public class Main {

@@ -1,0 +1,35 @@
+=== DELI-cious Receipt ===
+Order ID: 1
+Time: 2025-05-28 10:46:59
+
+--- Sandwiches ---
+1) 8" Wrap (toasted) - $16.60
+
+--- Drinks ---
+Large lemondae - $3.00
+
+--- Chips ---
+jalapeno kettle - $1.50
+
+TOTAL: $21.10
+===========================
+=== DELI-cious Receipt ===
+Order ID: 1
+Time: 2025-05-28 11:01:14
+
+--- Sandwiches ---
+1) 12" Rye (toasted) - $20.65
+    - ham (extra)
+    - steak (extra)
+    - american , provolone (extra)
+    - tomato lettuce onion pickle
+    - ketchup mayo thousand islands
+
+--- Drinks ---
+Large lemonade - $3.00
+
+--- Chips ---
+jalapeno kettle - $1.50
+
+TOTAL: $25.15
+===========================
