@@ -26,7 +26,7 @@ public class Drinks {
     }
     public String getFlavor(){
         return flavor;
-    }// method for size flavor 
+    }// method for size flavor
     public String getReceiptLine() {
         return size + " " + flavor + " - $" + String.format("%.2f", getPrice());
     }
