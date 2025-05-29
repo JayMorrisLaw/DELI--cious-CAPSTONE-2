@@ -27,7 +27,7 @@ public class Sandwich {
     public double getPrice(){
         // determining price
         double basePrice = 0.0;
-
+//  initialize price ^
         if (size ==4) {
             basePrice = 5.50;
         } else if (size == 8) {
@@ -42,19 +42,6 @@ public class Sandwich {
         }
         return basePrice;
     }
-    public String getReceiptLine(int index) {
-        StringBuilder line = new StringBuilder();
-        line.append(size).append("\" ");
-        // shows sandwich size
-        line.append(breadType.getType());
-        // shows bread type
-        if (isToasted) {
-            line.append(" (toasted)");
-            // shows if it's toasted
-        }
-        line.append(" - $").append(String.format("%.2f", getPrice())); // shows price
-        return line.toString();
-    }
 
 // generates a line summary of the sandwich
     public String getReceiptLine() {
@@ -63,7 +50,7 @@ public class Sandwich {
         line.append(size).append("\" ");
         // shows size
         line.append(breadType.getType());
-        // adds/ shows bread type
+        // shows bread type
 
         if (isToasted) {
             line.append(" (toasted)");

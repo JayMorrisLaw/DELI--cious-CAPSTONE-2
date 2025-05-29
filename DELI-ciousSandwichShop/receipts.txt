@@ -1,0 +1,28 @@
+=== DELI-cious Receipt ===
+Order ID: 1
+Time: 2025-05-29 14:15:55
+
+--- Sandwiches ---
+1) 12" White (toasted) - $28.30
+    - Chicken (extra)
+    - Bacon (extra)
+    - Salami (extra)
+    - Provolone (extra)
+    - Swiss (extra)
+    - Lettuce
+    - Tomato
+    - Pickle
+    - Peppers
+    - Mayo
+    - Ketchup
+    - Vinaigrette
+
+--- Drinks ---
+Large Lemonade - $3.00
+
+--- Chips ---
+Jalapeño Kettle - $1.50
+Sour Cream & Onion - $1.50
+
+TOTAL: $34.30
+===========================

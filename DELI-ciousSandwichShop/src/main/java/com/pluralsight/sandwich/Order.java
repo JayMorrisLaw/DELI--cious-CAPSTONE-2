@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
+// imports all tools
 public class Order {
     // attributes
     private static int nextId = 1;// order tracking, starts at1 and + by1
@@ -26,35 +26,34 @@ public class Order {
     }
 
     public static void saveToFile(Order order) {
-        //write to receipt
+        //write to receipt wrapped in try catch
         try {
-            // Format time
+            // used to Format time and date
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-            String fileName = "receipts.txt" + order.getOrderTime().format(formatter) + ".txt";
+            String fileName = "receipts.txt" + order.getOrderTime().format(formatter);
 
             //  write to receipt file
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-
+            // writing header
             writer.write("=== DELI-cious Receipt ===\n");
             writer.write("Order ID: " + order.getOrderId() + "\n");
             writer.write("Time: " + order.getOrderTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n\n");
-
+            // writing sandwiches
             writer.write("--- Sandwiches ---\n");
             for (Sandwich sandwich : order.getSandwiches()) {
                 writer.write(sandwich.getPrice() + "\n");
             }
-
+        // writing drinks
             writer.write("\n--- Drinks ---\n");
             for (Drinks drink : order.getDrinks()) {
                 writer.write(drink.getSize() + " " + drink.getFlavor() + " - $" + String.format("%.2f", drink.getPrice()) + "\n");
             }
-
+            // writing chips
             writer.write("\n--- Chips ---\n");
             for (Chips chip : order.getChips()) {
                 writer.write(chip.getType() + " - $" + String.format("%.2f", chip.getPrice()) + "\n");
             }
-
-
+            // writing the total
             writer.write("\nTOTAL: $" + String.format("%.2f", order.getTotal()) + "\n");
             writer.write("===========================\n");
 

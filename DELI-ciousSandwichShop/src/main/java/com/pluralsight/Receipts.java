@@ -20,7 +20,7 @@ public class Receipts {
             writer.write("=== DELI-cious Receipt ===\n");
             writer.write("Order ID: " + order.getOrderId() + "\n");
             writer.write("Time: " + order.getOrderTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + "\n\n");
-// write sandwiches
+// write sandwiches and detail
             writer.write("--- Sandwiches ---\n");
             int i = 1;
             //loops through each sandwich in the order and writes it
@@ -35,7 +35,6 @@ public class Receipts {
                     // this line writes all toppings in a dash format and adds extra is its extra
                 }
             }
-
 // writing drinks using a lambda expression,
             writer.write("\n--- Drinks ---\n");
             order.getDrinks().forEach(drink -> writeSafe(writer, drink.getReceiptLine()));
@@ -59,6 +58,7 @@ public class Receipts {
             writer.write(line + "\n");
         } catch (IOException e) {
             System.out.println("Error writing line: " + e.getMessage());
+
         }
     }
 }

@@ -2,12 +2,13 @@ package com.pluralsight.sandwich;
 
 public abstract class Topping {
     private String name;
-// attribute ^ and constructor
+// attribute ^ and constructor below
     public Topping(String name) {
         this.name = name;
     }
 
     public String getName() {
+        // returns topping name
         return name;
     }
 

@@ -43,6 +43,7 @@ public class UserInterface {
         boolean ordering = true;
 // boolean ordering is true so loop while ordering
         while (ordering) {
+            // shows order menu
             System.out.println("\n--- Order Menu ---");
             System.out.println("1) Add Sandwich");
             System.out.println("2) Add Drink");
@@ -51,7 +52,7 @@ public class UserInterface {
             System.out.println("0) Cancel Order");
             System.out.print("Choose an option: ");
             String input = scanner.nextLine();
-
+// switch cases for selections, uses methods
             switch (input) {
                 case "1":
                     processAddSandwich(order);
@@ -123,8 +124,8 @@ public class UserInterface {
                 System.out.println("Invalid choice. Defaulting to White.");
         }
         Bread bread = new Bread(breadType);
-        boolean isToasted = askToasted();
-        Sandwich sandwich = new Sandwich(size, bread, isToasted);
+        boolean isToasted = askToasted(); // asks if u want it toasted
+        Sandwich sandwich = new Sandwich(size, bread, isToasted); // creates new sandwich with bread type and toast type 
 
         boolean addingToppings = true;
         while (addingToppings) {
@@ -155,10 +156,11 @@ public class UserInterface {
                             choosing = false;
                             break;
                         }
-
+                        // string splitter splits input from user by the comma so the user can select more than 1 item
                         String[] selections = inputMeat.split(",");
                         for (String choice : selections) {
                             choice = choice.trim();
+                            // trim removes any extra spaces the user may enter
                             String meatName = null;
                             switch (choice) {
                                 case "1":
@@ -194,7 +196,7 @@ public class UserInterface {
                         break;
                     }
                 }
-                case "2": { // cheeese switch cases using string splitter by a comma
+                case "2": { // cheese switch cases using string splitter by a comma
                     boolean choosing = true;
                     String cheeseName;
                     while (choosing) {
@@ -305,6 +307,7 @@ public class UserInterface {
                             }
                         }
                         choosing = false;
+                        break;
                     }
                     break;
                 }
@@ -499,10 +502,7 @@ public class UserInterface {
             } else {
                 System.out.println("invalid input please type y or n ");
             }
-
         }
-
-
     }
     private boolean askToasted(){
         String toastChoice;

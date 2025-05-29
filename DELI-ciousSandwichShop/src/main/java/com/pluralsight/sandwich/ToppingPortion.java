@@ -1,9 +1,10 @@
 package com.pluralsight.sandwich;
-
+// wrapper class that presents a portion size and if its regular
 public class ToppingPortion {
     private Topping topping;
     private boolean extra;
-// sorts through topping and if its extra
+    // attributes^
+// constructor
     public ToppingPortion(Topping topping, boolean extra) {
         this.topping = topping;
         this.extra = extra;
