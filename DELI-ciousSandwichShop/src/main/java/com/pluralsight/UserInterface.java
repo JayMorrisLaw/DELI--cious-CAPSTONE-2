@@ -99,7 +99,6 @@ public class UserInterface {
                 size = 0;
             }
         }
-
         System.out.println("Choose bread type:");
         System.out.println("1) White");
         System.out.println("2) Wheat");
@@ -125,8 +124,7 @@ public class UserInterface {
         }
         Bread bread = new Bread(breadType);
 
-        System.out.print("Do you want it toasted? (y/n): ");
-        boolean isToasted = scanner.nextLine().equalsIgnoreCase("y");
+        boolean isToasted = askToasted();
 
         Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
@@ -186,6 +184,7 @@ public class UserInterface {
                                 case "7":
                                     System.out.println("Invalid meat choice: " + choice);
                                     break;
+                                    
                             }
                             if (meatName != null) {
                                 boolean extra = askExtra();
@@ -499,6 +498,21 @@ public class UserInterface {
 
         }
 
+
+    }
+    private boolean askToasted(){
+        String toastChoice;
+        while(true){
+            System.out.println("would you like it toasted? (y/n): ");
+            toastChoice = scanner.nextLine();
+            if (toastChoice.equalsIgnoreCase("y")){
+                return true;
+            } else if (toastChoice.equalsIgnoreCase("n")){
+                return false;
+            } else {
+                System.out.println("invalid choice please type y or n! ");
+            }
+        }
 
     }
 }
