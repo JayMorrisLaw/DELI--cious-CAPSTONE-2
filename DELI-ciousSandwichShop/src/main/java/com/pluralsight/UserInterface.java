@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
+    private String choice;
 
     // constructor
     public UserInterface(Scanner scanner) {
@@ -128,6 +129,7 @@ public class UserInterface {
         System.out.print("Do you want it toasted? (y/n): ");
         boolean isToasted = scanner.nextLine().equalsIgnoreCase("y");
 
+
         Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
         boolean addingToppings = true;
@@ -142,29 +144,25 @@ public class UserInterface {
             String input = scanner.nextLine();
 
             switch (input) {
-                case "1": { // meat switch cases using string splitter by a comma
+                case "1": { // meat switch cases
                     boolean choosing = true;
-                    while (choosing) {
-                        System.out.println("Choose meat(s), separated by commas:");
+                    while (true) {
+                        System.out.println("Choose meat(s), type done when finished:");
                         System.out.println("1) Steak");
                         System.out.println("2) Ham");
                         System.out.println("3) Salami");
                         System.out.println("4) Roast Beef");
                         System.out.println("5) Chicken");
                         System.out.println("6) Bacon");
-                        System.out.print("Enter choices or 0 to go back: ");
-                        String inputMeat = scanner.nextLine();
+                        System.out.print("Choice: ");
+                        String inputMeat = scanner.nextLine().trim();
 
-                        if (inputMeat.equals("0")) {
-                            choosing = false;
+                        if (inputMeat.equalsIgnoreCase("done")) {
                             break;
                         }
 
-                        String[] selections = inputMeat.split(",");
-                        for (String choice : selections) {
-                            choice = choice.trim();
                             String meatName = null;
-                            switch (choice) {
+                            switch (inputMeat) {
                                 case "1":
                                     meatName = "Steak";
                                     break;
@@ -184,16 +182,14 @@ public class UserInterface {
                                     meatName = "Bacon";
                                     break;
                                 default:
-                                    System.out.println("Invalid meat choice: " + choice);
+                                    System.out.println("Invalid meat choice: " + inputMeat);
                             }
                             if (meatName != null) {
                                 boolean extra = askExtra();
                                 sandwich.addTopping(new Meat(meatName), extra);
                             }
                         }
-                        choosing = false;
-                    }
-                    break;
+                    break ;
                 }
                 case "2": { // cheeese switch cases using string splitter by a comma
                     boolean choosing = true;
