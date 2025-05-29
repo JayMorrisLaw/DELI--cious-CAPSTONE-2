@@ -23,7 +23,7 @@ public class Receipts {
 // write sandwiches
             writer.write("--- Sandwiches ---\n");
             int i = 1;
-            //loops through each sandwich in the order
+            //loops through each sandwich in the order and writes it
             for (Sandwich sandwich : order.getSandwiches()) {
                 writer.write(i++ + ") " + sandwich.getReceiptLine() + "\n");
 // shows each topping specifically and if its extra
@@ -54,7 +54,6 @@ public class Receipts {
             System.out.println("Error saving receipt: " + e.getMessage());
         }
     }
-
     private static void writeSafe(BufferedWriter writer, String line) {
         try {
             writer.write(line + "\n");
