@@ -123,9 +123,7 @@ public class UserInterface {
                 System.out.println("Invalid choice. Defaulting to White.");
         }
         Bread bread = new Bread(breadType);
-
         boolean isToasted = askToasted();
-
         Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
         boolean addingToppings = true;
@@ -184,11 +182,12 @@ public class UserInterface {
                                 case "7":
                                     System.out.println("Invalid meat choice: " + choice);
                                     break;
-                                    
+
                             }
                             if (meatName != null) {
                                 boolean extra = askExtra();
                                 sandwich.addTopping(new Meat(meatName), extra);
+                                System.out.println(meatName + (extra ? " (extra)" : "") + " added!");
                             }
                         }
                         choosing = false;
@@ -235,6 +234,7 @@ public class UserInterface {
                             if (cheeseName != null) {
                                 boolean extra = askExtra();
                                 sandwich.addTopping(new Cheese(cheeseName), extra);
+                                System.out.println(cheeseName + (extra ? " (extra)" : "") + " added!");
                             }
                         }
                         choosing = false;
@@ -301,6 +301,7 @@ public class UserInterface {
 
                             if (toppingName != null) {
                                 sandwich.addTopping(new RegularTopping(toppingName), false);
+                                System.out.println(toppingName + " added!");
                             }
                         }
                         choosing = false;
@@ -351,6 +352,8 @@ public class UserInterface {
 
                             if (sauceName != null) {
                                 sandwich.addTopping(new Sauce(sauceName), false);
+                                System.out.println(sauceName + " added!");
+
                             }
                         }
                         choosing = false;
@@ -394,7 +397,6 @@ public class UserInterface {
                 default:
                     System.out.println("Invalid size. Please select 1, 2, or 3.");
             }
-            System.out.println("Drink added! ");
         }
 
         String flavor = "";
@@ -476,6 +478,8 @@ public class UserInterface {
 
                 if (chipType != null) {
                     order.addChips(new Chips(chipType));
+                    System.out.println(chipType + " chips added!");
+
                 }
             }
             choosing = false;
