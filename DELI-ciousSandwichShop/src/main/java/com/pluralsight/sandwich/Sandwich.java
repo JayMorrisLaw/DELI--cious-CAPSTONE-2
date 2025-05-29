@@ -63,6 +63,26 @@ public class Sandwich {
     public List<ToppingPortion> getToppings() {
         return toppings;
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        // Sandwich summary
+        sb.append(getReceiptLine()).append("\n");
+
+        // List toppings
+        sb.append("Toppings:\n");
+        for (ToppingPortion portion : toppings) {
+            sb.append(" - ").append(portion.getTopping().getName());
+            if (portion.isExtra()) {
+                sb.append(" (extra)");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
 
 
 }

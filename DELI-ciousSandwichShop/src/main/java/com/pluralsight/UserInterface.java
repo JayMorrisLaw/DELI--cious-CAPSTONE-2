@@ -3,7 +3,6 @@ import com.pluralsight.sandwich.*;
 import java.util.Scanner;
 // class imports
 
-
 public class UserInterface {
     private Scanner scanner;
 
@@ -125,7 +124,7 @@ public class UserInterface {
         }
         Bread bread = new Bread(breadType);
         boolean isToasted = askToasted(); // asks if u want it toasted
-        Sandwich sandwich = new Sandwich(size, bread, isToasted); // creates new sandwich with bread type and toast type 
+        Sandwich sandwich = new Sandwich(size, bread, isToasted); // creates new sandwich with bread type and toast type
 
         boolean addingToppings = true;
         while (addingToppings) {
@@ -371,9 +370,8 @@ public class UserInterface {
                     System.out.println("Invalid option.");
             }
         }
-
         order.addSandwich(sandwich);
-        System.out.println("Sandwich added!\n");
+        System.out.println("Sandwich added! Total sandwiches so far: " + order.getSandwiches().size() + "\n");
     }
 
 

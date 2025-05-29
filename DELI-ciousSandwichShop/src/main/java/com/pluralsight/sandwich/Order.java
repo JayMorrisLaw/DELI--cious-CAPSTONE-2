@@ -41,7 +41,7 @@ public class Order {
             // writing sandwiches
             writer.write("--- Sandwiches ---\n");
             for (Sandwich sandwich : order.getSandwiches()) {
-                writer.write(sandwich.getPrice() + "\n");
+                writer.write(sandwich.toString() + "\n");
             }
         // writing drinks
             writer.write("\n--- Drinks ---\n");
@@ -114,5 +114,6 @@ public class Order {
     public LocalDateTime getOrderTime() {
         return orderTime;}
     }
+    
 
 

@@ -1,6 +1,8 @@
 # DELI-cious Ordering System
 
 ## Overview
+Here is the diagram I used to help guide me through the project structure
+![Org charts.png](classdiagram/Org%20charts.png)
 
 DELI-cious is a command-line point-of-sale (POS) system written in Java that simulates the experience of placing an order at a sandwich deli. 
 Customers can create custom sandwiches, add drinks and chips, and receive a detailed printed receipt.
