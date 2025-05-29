@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
-    private String choice;
 
     // constructor
     public UserInterface(Scanner scanner) {
@@ -129,7 +128,6 @@ public class UserInterface {
         System.out.print("Do you want it toasted? (y/n): ");
         boolean isToasted = scanner.nextLine().equalsIgnoreCase("y");
 
-
         Sandwich sandwich = new Sandwich(size, bread, isToasted);
 
         boolean addingToppings = true;
@@ -144,25 +142,29 @@ public class UserInterface {
             String input = scanner.nextLine();
 
             switch (input) {
-                case "1": { // meat switch cases
+                case "1": { // meat switch cases using string splitter by a comma
                     boolean choosing = true;
-                    while (true) {
-                        System.out.println("Choose meat(s), type done when finished:");
+                    while (choosing) {
+                        System.out.println("Choose meat(s), separated by commas:");
                         System.out.println("1) Steak");
                         System.out.println("2) Ham");
                         System.out.println("3) Salami");
                         System.out.println("4) Roast Beef");
                         System.out.println("5) Chicken");
                         System.out.println("6) Bacon");
-                        System.out.print("Choice: ");
-                        String inputMeat = scanner.nextLine().trim();
+                        System.out.print("Enter choices or 0 to go back: ");
+                        String inputMeat = scanner.nextLine();
 
-                        if (inputMeat.equalsIgnoreCase("done")) {
+                        if (inputMeat.equals("0")) {
+                            choosing = false;
                             break;
                         }
 
+                        String[] selections = inputMeat.split(",");
+                        for (String choice : selections) {
+                            choice = choice.trim();
                             String meatName = null;
-                            switch (inputMeat) {
+                            switch (choice) {
                                 case "1":
                                     meatName = "Steak";
                                     break;
@@ -181,15 +183,18 @@ public class UserInterface {
                                 case "6":
                                     meatName = "Bacon";
                                     break;
-                                default:
-                                    System.out.println("Invalid meat choice: " + inputMeat);
+                                case "7":
+                                    System.out.println("Invalid meat choice: " + choice);
+                                    break;
                             }
                             if (meatName != null) {
                                 boolean extra = askExtra();
                                 sandwich.addTopping(new Meat(meatName), extra);
                             }
                         }
-                    break ;
+                        choosing = false;
+                        break;
+                    }
                 }
                 case "2": { // cheeese switch cases using string splitter by a comma
                     boolean choosing = true;
@@ -482,17 +487,18 @@ public class UserInterface {
     private boolean askExtra() {
         String userInput;
         while (true) {
-            boolean asking = true;
+            System.out.println("would you like extra for an upcharge? (y/n): ");
             userInput = scanner.nextLine();
-            if (userInput.equalsIgnoreCase("y")){
+            if (userInput.equalsIgnoreCase("y")) {
                 return true;
             } else if (userInput.equalsIgnoreCase("n")) {
                 return false;
             } else {
-                System.out.println("invalid input");
+                System.out.println("invalid input please type y or n ");
             }
 
-
         }
+
+
     }
 }
